@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fdfaf3;
+  --bg-alt: #f7f0dd;
+  --card: #ffffff;
+  --border: #e8dfc5;
+  --border-strong: #c9a94f;
+  --ink: #2a2318;
+  --ink-soft: #6b6252;
+  --ink-faint: #9a9280;
+  --gold: #b8860b;
+  --gold-deep: #8a6508;
+  --gold-bright: #d7a92e;
+  --wood: #3f7a52;
+  --wood-bg: #eaf3ec;
+  --fire: #b24a3e;
+  --fire-bg: #fbeae7;
+  --earth: #a8792f;
+  --earth-bg: #f7efdd;
+  --metal: #7a7a82;
+  --metal-bg: #f0f0f0;
+  --water: #2f5f8a;
+  --water-bg: #e8f0f7;
+
+  --font-serif: "Noto Serif KR", serif;
+  --font-sans: "Noto Sans KR", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg: #171310;
+  --bg-alt: #1e1811;
+  --card: #211b14;
+  --border: #3a3020;
+  --border-strong: #8a6c2e;
+  --ink: #f2ecdd;
+  --ink-soft: #c2b8a0;
+  --ink-faint: #8a8170;
+  --gold: #d9a84c;
+  --gold-deep: #e8c376;
+  --gold-bright: #e8c376;
+  --wood: #6fbe87;
+  --wood-bg: #1c2a20;
+  --fire: #e08a7c;
+  --fire-bg: #2e1d1a;
+  --earth: #e0a554;
+  --earth-bg: #2e2510;
+  --metal: #b8b8c0;
+  --metal-bg: #232326;
+  --water: #7fb0d8;
+  --water-bg: #16232e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171310;
+    --bg-alt: #1e1811;
+    --card: #211b14;
+    --border: #3a3020;
+    --border-strong: #8a6c2e;
+    --ink: #f2ecdd;
+    --ink-soft: #c2b8a0;
+    --ink-faint: #8a8170;
+    --gold: #d9a84c;
+    --gold-deep: #e8c376;
+    --gold-bright: #e8c376;
+    --wood: #6fbe87;
+    --wood-bg: #1c2a20;
+    --fire: #e08a7c;
+    --fire-bg: #2e1d1a;
+    --earth: #e0a554;
+    --earth-bg: #2e2510;
+    --metal: #b8b8c0;
+    --metal-bg: #232326;
+    --water: #7fb0d8;
+    --water-bg: #16232e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.font-serif-kr {
+  font-family: var(--font-serif);
+}
+
+.font-mono-kr {
+  font-family: var(--font-mono);
+}
+
+.lattice-bg {
+  background-image: repeating-linear-gradient(
+      45deg,
+      var(--border-strong) 0,
+      var(--border-strong) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      var(--border-strong) 0,
+      var(--border-strong) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+  background-color: var(--bg);
+  opacity: 1;
+}
