@@ -2,36 +2,19 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { TIERS } from "@/lib/tiers";
 
-const PILLARS = [
-  { label: "시주", char: "壬申", top: "el-water", bottom: "el-metal" },
-  { label: "일주", char: "甲寅", top: "el-wood", bottom: "el-wood", self: true },
-  { label: "월주", char: "庚子", top: "el-metal", bottom: "el-water" },
-  { label: "년주", char: "丙寅", top: "el-fire", bottom: "el-wood" },
-];
-
-const ELEMENTS = [
-  { name: "목", key: "el-wood", value: 3, color: "var(--wood)" },
-  { name: "화", key: "el-fire", value: 1, color: "var(--fire)" },
-  { name: "토", key: "el-earth", value: 0, color: "var(--earth)" },
-  { name: "금", key: "el-metal", value: 2, color: "var(--metal)" },
-  { name: "수", key: "el-water", value: 2, color: "var(--water)" },
-];
-
-const TOTAL_ELEMENTS = ELEMENTS.reduce((sum, e) => sum + e.value, 0);
-
 const PAINS = [
   {
-    mark: "01",
+    num: "01",
     title: "유료 앱, 결과는 다 비슷비슷",
     body: "생년월일만 넣으면 나오는 자동생성 문구. 누구한테 붙여도 말이 되는 두루뭉술한 풀이에 돈을 낸 적 있다면.",
   },
   {
-    mark: "02",
+    num: "02",
     title: "무료 사주는 짧고 애매하다",
     body: "오늘의 운세, 한 줄 총평. 정작 궁금한 건 앞으로 10년, 올해 열두 달인데 거기까진 안 알려준다.",
   },
   {
-    mark: "03",
+    num: "03",
     title: "용어는 어려운데 설명이 없다",
     body: "정관, 편재, 형충회합 — 한자만 던져놓고 알아서 해석하라는 리포트. 초등학생도 읽을 수 있어야 진짜 풀이다.",
   },
@@ -57,13 +40,13 @@ const REVIEWS = [
   {
     name: "곽O솔",
     date: "2026.06.16",
-    body: "사주 자체를 처음 보다보니 실제로 봐본 적은 없었지만, 단순히 \"돈 들어온다\", \"운이 좋다\"가 아니라 저한테 일어나는 일들에 대한 흐름과 구조를 설명해줘서 처음부터 끝까지 집중해서 읽었습니다. 직업 분석에서 왜 그런 구조가 나오는지 흐름으로 설명해준 점이 좋았고, 좋은 말만 적어놓은 게 아니라 약점도 직설적으로 짚어준 부분이 오히려 신뢰가 갔습니다.",
+    body: "사주 자체를 처음 보다보니 실제로 봐본 적은 없었지만, 단순히 \"돈 들어온다\", \"운이 좋다\"가 아니라 저한테 일어나는 일들에 대한 흐름과 구조를 설명해줘서 처음부터 끝까지 집중해서 읽었습니다. 좋은 말만 적어놓은 게 아니라 약점도 직설적으로 짚어준 부분이 오히려 신뢰가 갔습니다.",
     tag: "무료 원국 요약 체험 후기",
   },
   {
     name: "박O영",
     date: "2026.06.27",
-    body: "무료라 솔직히 기대하지 않았는데 리포트를 받고 깜짝 놀랐습니다. 인생 전체 해석부터 월별 흐름까지 자세히 나와 있어서 웬만한 유료 사주보다 나은 것 같아요. 그리고 자세한 유료 리포트는 어떻게 봐주실지 엄청 궁금해졌어요. 요즘 고민되는 게 많았는데 많은 도움이 되었습니다.",
+    body: "무료라 솔직히 기대하지 않았는데 리포트를 받고 깜짝 놀랐습니다. 인생 전체 해석부터 월별 흐름까지 자세히 나와 있어서 웬만한 유료 사주보다 나은 것 같아요. 자세한 유료 리포트는 어떻게 봐주실지 엄청 궁금해졌어요.",
     tag: "무료 원국 요약 체험 후기",
   },
 ];
@@ -99,9 +82,7 @@ export default function Home() {
     <div className={styles.page}>
       <nav className={styles.nav}>
         <div className={styles.navInner}>
-          <div className={styles.navBrand}>
-            황금돈사부 <span>· 인생사주리포트</span>
-          </div>
+          <div className={styles.navBrand}>황금돈사부</div>
           <Link href="#pricing" className={styles.navCta}>
             리포트 보기
           </Link>
@@ -110,98 +91,46 @@ export default function Home() {
 
       <header className={styles.hero}>
         <div className={styles.wrap}>
-          <div className={styles.heroGrid}>
-            <div>
-              <div className={styles.ratingBadge}>
-                <span className={styles.ratingStars} aria-hidden="true">
-                  ★★★★★
-                </span>
-                <span className={styles.ratingScore}>4.8</span>
-                <span className={styles.ratingDivider} aria-hidden="true" />
-                <span className={styles.ratingCount}>
-                  네이버 엑스퍼트 누적 상담 <b>19건+</b>
-                </span>
-              </div>
-              <span className={styles.eyebrow}>만세력 검증 · 팩트 기반 풀이</span>
-              <h1 className={styles.heroTitle}>
-                근거 없는 사주풀이는
-                <br />
-                <em>이제 그만.</em>
-              </h1>
-              <p className={styles.heroDeck}>
-                생년월일 넣으면 똑같이 나오는 자동생성 리포트 말고, 사주 원국부터 10년
-                대운, 올해 열두 달까지 — 왜 그런지 근거를 밝히는 리포트입니다.
-              </p>
-              <div className={styles.heroActions}>
-                <Link href="#pricing" className={styles.btnPrimary}>
-                  내 리포트 받아보기
-                </Link>
-                <Link href="#sample" className={styles.btnGhost}>
-                  샘플 리포트 보기
-                </Link>
-              </div>
-              <div className={styles.trustRow}>
-                <span>
-                  <strong>13개 섹션</strong> 완결 구성
-                </span>
-                <span>
-                  <strong>대운 8개</strong> 전체 해설
-                </span>
-                <span>
-                  <strong>만세력</strong> 검증 데이터
-                </span>
-              </div>
+          <div className={styles.heroInner}>
+            <div className={styles.ratingBadge}>
+              <span className={styles.ratingDot} aria-hidden="true" />
+              <span className={styles.ratingText}>
+                네이버 엑스퍼트 <b>4.8</b> · 누적 상담 <b>19건+</b>
+              </span>
             </div>
 
-            <div className={styles.chartCard}>
-              <div className={styles.heroLattice} aria-hidden="true" />
-              <div className={styles.chartHead}>
-                <span className={styles.chartHeadTitle}>사주 원국 샘플</span>
-                <span className={styles.chartHeadMeta}>SAMPLE · 1987.01.05</span>
-              </div>
+            <h1 className={styles.heroTitle}>
+              근거 없는 사주풀이는
+              <br />
+              <span className={styles.accent}>이제 그만.</span>
+            </h1>
 
-              <div className={styles.pillars}>
-                {PILLARS.map((p) => (
-                  <div className={styles.pillar} key={p.label}>
-                    <div className={styles.pillarLabel}>
-                      {p.label}
-                      {p.self ? " ·나" : ""}
-                    </div>
-                    <div className={styles.pillarStack}>
-                      <span className={`${styles.pillarChar} ${styles[p.top]}`}>
-                        {p.char[0]}
-                      </span>
-                      <span className={`${styles.pillarChar} ${styles[p.bottom]}`}>
-                        {p.char[1]}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <p className={styles.heroDeck}>
+              생년월일 넣으면 똑같이 나오는 자동생성 리포트 말고, 사주 원국부터 10년
+              대운, 올해 열두 달까지 — 왜 그런지 근거를 밝히는 리포트입니다.
+            </p>
 
-              <div className={styles.elementBar}>
-                {ELEMENTS.map((e) => (
-                  <div
-                    key={e.key}
-                    style={{
-                      width: `${(e.value / TOTAL_ELEMENTS) * 100}%`,
-                      background: e.color,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className={styles.elementLegend}>
-                {ELEMENTS.map((e) => (
-                  <span key={e.key}>
-                    <span className={styles.dot} style={{ background: e.color }} />
-                    {e.name} {e.value}
-                  </span>
-                ))}
-              </div>
+            <div className={styles.heroActions}>
+              <Link href="#pricing" className={styles.btnPrimary}>
+                내 리포트 받아보기
+              </Link>
+              <Link href="#sample" className={styles.btnGhost}>
+                샘플 리포트 보기
+              </Link>
+            </div>
 
-              <div className={styles.chartFooter}>
-                <span>인신충(寅申沖) 이중 구조</span>
-                <span>대운 甲辰 · 31~40세</span>
+            <div className={styles.statRow}>
+              <div className={styles.stat}>
+                <span className={styles.statNum}>13</span>
+                <span className={styles.statLabel}>섹션 완결 구성</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNum}>8</span>
+                <span className={styles.statLabel}>대운 전체 해설</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNum}>12</span>
+                <span className={styles.statLabel}>2026년 월운 전체</span>
               </div>
             </div>
           </div>
@@ -211,7 +140,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>이런 경험, 있으셨을 겁니다</div>
+            <div className={styles.sectionLabel}>이런 경험, 있으셨을 겁니다</div>
             <h2 className={styles.sectionTitle}>사주풀이에 실망했던 이유</h2>
             <p className={styles.sectionDeck}>
               황금돈사부는 세 가지 문제를 정면으로 다르게 풀었습니다.
@@ -219,8 +148,8 @@ export default function Home() {
           </div>
           <div className={styles.painGrid}>
             {PAINS.map((p) => (
-              <div className={styles.painCard} key={p.mark}>
-                <span className={styles.painMark}>{p.mark}</span>
+              <div className={styles.painCard} key={p.num}>
+                <span className={styles.painNum}>{p.num}</span>
                 <div className={styles.painTitle}>{p.title}</div>
                 <div className={styles.painBody}>{p.body}</div>
               </div>
@@ -232,7 +161,7 @@ export default function Home() {
       <section className={styles.section} id="sample">
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>리포트 미리보기</div>
+            <div className={styles.sectionLabel}>리포트 미리보기</div>
             <h2 className={styles.sectionTitle}>13개 섹션, 끊김 없는 완결 구성</h2>
             <p className={styles.sectionDeck}>
               등급에 따라 포함되는 섹션은 다르지만, 구성 원칙은 모두 같습니다.
@@ -271,7 +200,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>실제 이용 후기</div>
+            <div className={styles.sectionLabel}>실제 이용 후기</div>
             <h2 className={styles.sectionTitle}>먼저 받아보신 분들의 이야기</h2>
             <p className={styles.sectionDeck}>
               무료 원국 요약을 먼저 받아보신 분들이 남겨주신 후기입니다.
@@ -299,7 +228,7 @@ export default function Home() {
       <section className={styles.section} id="pricing">
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>등급 선택</div>
+            <div className={styles.sectionLabel}>등급 선택</div>
             <h2 className={styles.sectionTitle}>어디까지 알고 싶으신가요</h2>
             <p className={styles.sectionDeck}>
               원국만 볼지, 10년 흐름까지 볼지, 올해 열두 달까지 볼지 — 필요한 만큼만
@@ -352,12 +281,15 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>이용 방법</div>
+            <div className={styles.sectionLabel}>이용 방법</div>
             <h2 className={styles.sectionTitle}>네 단계면 끝납니다</h2>
           </div>
           <div className={styles.processRow}>
-            {PROCESS.map((p) => (
+            {PROCESS.map((p, i) => (
               <div className={styles.processStep} key={p.title}>
+                <div className={styles.processIndex}>
+                  {String(i + 1).padStart(2, "0")}
+                </div>
                 <div className={styles.processTitle}>{p.title}</div>
                 <div className={styles.processBody}>{p.body}</div>
               </div>
@@ -369,7 +301,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.wrap}>
           <div className={styles.sectionHead}>
-            <div className={styles.sectionEyebrow}>자주 묻는 질문</div>
+            <div className={styles.sectionLabel}>자주 묻는 질문</div>
             <h2 className={styles.sectionTitle}>궁금하신 점</h2>
           </div>
           <div className={styles.faqList}>

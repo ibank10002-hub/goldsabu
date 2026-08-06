@@ -1,80 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #fdfaf3;
-  --bg-alt: #f7f0dd;
+  --bg: #ffffff;
+  --bg-alt: #fafafa;
   --card: #ffffff;
-  --border: #e8dfc5;
-  --border-strong: #c9a94f;
-  --ink: #2a2318;
-  --ink-soft: #6b6252;
-  --ink-faint: #9a9280;
-  --gold: #b8860b;
-  --gold-deep: #8a6508;
-  --gold-bright: #d7a92e;
-  --wood: #3f7a52;
-  --wood-bg: #eaf3ec;
-  --fire: #b24a3e;
-  --fire-bg: #fbeae7;
-  --earth: #a8792f;
-  --earth-bg: #f7efdd;
-  --metal: #7a7a82;
-  --metal-bg: #f0f0f0;
-  --water: #2f5f8a;
-  --water-bg: #e8f0f7;
+  --border: #e8e8e8;
+  --border-strong: #d4d4d4;
+  --ink: #141414;
+  --ink-soft: #6b6b6b;
+  --ink-faint: #a3a3a3;
+  --accent: #3730a9;
+  --accent-ink: #2b2482;
+  --accent-bright: #4d44d6;
+  --accent-bg: #f1f0fb;
+  --good: #1a7a4c;
+  --good-bg: #ecf7f1;
 
-  --font-serif: "Noto Serif KR", serif;
-  --font-sans: "Noto Sans KR", sans-serif;
+  --font-sans: "Noto Sans KR", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 :root[data-theme="dark"] {
-  --bg: #171310;
-  --bg-alt: #1e1811;
-  --card: #211b14;
-  --border: #3a3020;
-  --border-strong: #8a6c2e;
-  --ink: #f2ecdd;
-  --ink-soft: #c2b8a0;
-  --ink-faint: #8a8170;
-  --gold: #d9a84c;
-  --gold-deep: #e8c376;
-  --gold-bright: #e8c376;
-  --wood: #6fbe87;
-  --wood-bg: #1c2a20;
-  --fire: #e08a7c;
-  --fire-bg: #2e1d1a;
-  --earth: #e0a554;
-  --earth-bg: #2e2510;
-  --metal: #b8b8c0;
-  --metal-bg: #232326;
-  --water: #7fb0d8;
-  --water-bg: #16232e;
+  --bg: #0a0a0a;
+  --bg-alt: #121212;
+  --card: #141414;
+  --border: #262626;
+  --border-strong: #383838;
+  --ink: #f5f5f5;
+  --ink-soft: #a3a3a3;
+  --ink-faint: #6b6b6b;
+  --accent: #7b72e8;
+  --accent-ink: #948bff;
+  --accent-bright: #948bff;
+  --accent-bg: #1a1830;
+  --good: #4ade80;
+  --good-bg: #132318;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #171310;
-    --bg-alt: #1e1811;
-    --card: #211b14;
-    --border: #3a3020;
-    --border-strong: #8a6c2e;
-    --ink: #f2ecdd;
-    --ink-soft: #c2b8a0;
-    --ink-faint: #8a8170;
-    --gold: #d9a84c;
-    --gold-deep: #e8c376;
-    --gold-bright: #e8c376;
-    --wood: #6fbe87;
-    --wood-bg: #1c2a20;
-    --fire: #e08a7c;
-    --fire-bg: #2e1d1a;
-    --earth: #e0a554;
-    --earth-bg: #2e2510;
-    --metal: #b8b8c0;
-    --metal-bg: #232326;
-    --water: #7fb0d8;
-    --water-bg: #16232e;
+    --bg: #0a0a0a;
+    --bg-alt: #121212;
+    --card: #141414;
+    --border: #262626;
+    --border-strong: #383838;
+    --ink: #f5f5f5;
+    --ink-soft: #a3a3a3;
+    --ink-faint: #6b6b6b;
+    --accent: #7b72e8;
+    --accent-ink: #948bff;
+    --accent-bright: #948bff;
+    --accent-bg: #1a1830;
+    --good: #4ade80;
+    --good-bg: #132318;
   }
 }
 
@@ -90,9 +68,10 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  line-height: 1.7;
-  font-size: 17px;
+  line-height: 1.6;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.011em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -106,33 +85,10 @@ body {
 }
 
 ::selection {
-  background: var(--gold);
-  color: var(--bg);
-}
-
-.font-serif-kr {
-  font-family: var(--font-serif);
+  background: var(--accent);
+  color: #fff;
 }
 
 .font-mono-kr {
   font-family: var(--font-mono);
-}
-
-.lattice-bg {
-  background-image: repeating-linear-gradient(
-      45deg,
-      var(--border-strong) 0,
-      var(--border-strong) 1px,
-      transparent 1px,
-      transparent 28px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      var(--border-strong) 0,
-      var(--border-strong) 1px,
-      transparent 1px,
-      transparent 28px
-    );
-  background-color: var(--bg);
-  opacity: 1;
 }

@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Serif_KR, Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
+import { Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const serif = Noto_Serif_KR({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["500", "700", "900"],
-});
 
 const sans = Noto_Sans_KR({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "900"],
 });
 
 const mono = JetBrains_Mono({
@@ -28,10 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ko"
-      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
-    >
+    <html lang="ko" className={`${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );
